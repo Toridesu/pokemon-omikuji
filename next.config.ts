@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
+    // domains: ["raw.githubusercontent.com"],
+
     remotePatterns: [
       {
         protocol: "https",
@@ -10,6 +12,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  output: "export",
 };
 
 export default nextConfig;
