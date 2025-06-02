@@ -50,13 +50,26 @@
 
 ```
 src
-├── app/            # Next.js App Routerの各ページコンポーネント
-├── components/     # 再利用可能なUIコンポーネント
-│   ├── ui/         # shadcn/uiベースのコンポーネント
-│   └── ...
-├── lib/            # ユーティリティ関数など (例: shadcn/ui の utils.ts)
-├── styles/         # グローバルなスタイル (例: globals.css)
-└── ...             # その他、hooks, types, context など
+├── app/            # Next.js App Routerのルーティングとページコンポーネント
+│   ├── (root)/     # ルートパス ("/") に対応するファイル群
+│   │   └── page.tsx  # トップページ（おみくじを引く画面）のメインコンポーネント
+│   ├── layout.tsx  # アプリケーション全体の共通レイアウトコンポーネント
+│   ├── loading.tsx # ページやコンポーネントのローディング中に表示されるUI
+│   ├── globals.css # グローバルなCSSスタイルシート
+│   └── pokemon/    # "/pokemon" パスに関連するルーティング
+│       └── [id]/   # 動的ルートセグメント (例: /pokemon/25 はピカチュウの詳細)
+│           └── page.tsx # ポケモン詳細ページのコンポーネント (将来的に実装予定など)
+├── components/     # 再利用可能なUIコンポーネント群
+│   └── ui/         # shadcn/ui から導入したベースコンポーネント (例: Button, Card, Progress)
+├── constants/      # アプリケーション全体で使われる定数
+│   └── index.ts    # 定義を集約するファイル (例: APIのベースURL、ポケモンのID範囲など)
+├── lib/            # 外部ライブラリの設定やユーティリティ
+│   └── utils.ts    # shadcn/ui のユーティリティ関数 (tailwind-merge, clsx など)
+├── types/          # TypeScriptの型定義
+│   └── index.ts    # プロジェクト全体で使われる型定義を集約 (例: Pokemon型, ApiResponse型など)
+├── utils/          # 汎用的なユーティリティ関数
+│   └── api.tsx     # PokeAPIとの通信処理など、API関連の関数群
+└── ...             # その他、必要に応じて追加されるディレクトリ (例: hooks, context)
 ```
 
 ---
